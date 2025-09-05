@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        PATH = "/usr/local/bin:$PATH"
         DOCKER_BFLASK_IMAGE = 'anuruddhaedcd/my-flask-app:latest'
         DOCKER_REGISTRY_CREDS = 'docker-jenkins-token1'
     }
@@ -24,12 +25,12 @@ pipeline {
             steps {
                 withCredentials([
                     usernamePassword(
-                        credentialsId: "${DOCKER_REGISTRY_CREDS}",
+                        credentialsId: "$DOCKER_REGISTRY_CREDS",
                         passwordVariable: 'DOCKER_PASSWORD',
                         usernameVariable: 'DOCKER_USERNAME'
                     )
                 ]) {
-                    sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin docker.io"
+                    sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin docker.io"
                     sh "docker push $DOCKER_BFLASK_IMAGE"
                 }
             }
