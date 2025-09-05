@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_BFLASK_IMAGE = 'anuruddhaedcd/my-flask-app:latest'
-        DOCKER_REGISTRY_CREDS = 'docker-jenkins-token-1'
+        DOCKER_REGISTRY_CREDS = 'docker-jenkins-token1'
     }
 
     stages {
