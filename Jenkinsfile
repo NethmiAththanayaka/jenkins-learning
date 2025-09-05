@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_BFLASK_IMAGE = 'anuruddhaedcd/my-flask-app:latest'
+        DOCKER_BFLASK_IMAGE = 'nethmipoornima/my-flask-app:latest'
         DOCKER_REGISTRY_CREDS = 'docker-jenkins-token1'
         DOCKER_CMD = '/usr/local/bin/docker'  // full path to Docker
         PATH = "/usr/local/bin:${env.PATH}"   // ensure Jenkins can find Docker
